@@ -17,14 +17,22 @@
         </tr>
       </thead>
       <tbody>
-        <% rows.forEach(data => { %>
+        <!-- <% rows.forEach(data => { %>
           <tr>
             <td><%= data.id %></td>
             <td><%= data.first_name %></td>
             <td><%= data.last_name %></td>
             <td><%= data.email %></td>
           </tr>
-        <% }) %>
+        <% }) %> -->
+        {{#each this}}
+          <tr>
+            <td> {{id}} </td>
+            <td> {{first_name}} </td>
+            <td> {{last_name}} </td>
+            <td> {{email}} </td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
   </body>

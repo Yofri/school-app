@@ -33,3 +33,10 @@
   * email: string
 > sqlz model:create -- Student -- attributes first_name:string,last_name:string,email:string
 > sqlz db:migrate
+
+8. Buat aplikasi CRUD untuk tabel Student:
+  * GET /students - menampilkan data semua student
+  * POST /students/add - handle input dari form
+  * GET /students/edit/:id - menampilkan form data student berdasarkan id
+  * POST /students/edit/:id - menghandle input dari form saat update
+  * GET /students/delete/:id - delete student berdasarkan id

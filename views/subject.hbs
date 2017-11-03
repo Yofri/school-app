@@ -15,12 +15,18 @@
         </tr>
       </thead>
       <tbody>
-        <% rows.forEach(data => { %>
+        {{!-- <% rows.forEach(data => { %>
           <tr>
             <td><%= data.id %></td>
             <td><%= data.subject_name %></td>
           </tr>
-        <% }) %>
+        <% }) %> --}}
+        {{#each this}}
+          <tr>
+            <td> {{id}} </td>
+            <td> {{subject_name}} </td>
+          </tr>
+        {{/each}}
       </tbody>
     </table>
   </body>

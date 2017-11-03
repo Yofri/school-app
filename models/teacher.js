@@ -9,12 +9,6 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true
       }
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
   return Teacher;
 };
