@@ -21,7 +21,8 @@ router.post('/', async (req, res) => {
     });
     res.redirect('/students');
   } catch (err) {
-    console.error(err);
+    // res.send(err);
+    res.render('add-student', { err });
   }
 });
 

@@ -29,11 +29,18 @@
               <td>{{ email }}</td>
               <td>
                 <a href="/students/edit/{{id}}">Edit</a>
-                <a href="/students/delete/{{id}}" onclick="confirm('delete this student?')">Delete</a>
+                <a href="/students/delete/{{id}}" id="confirmation">Delete</a>
               </td>
             </tr>
         {{/each}}
       </tbody>
     </table>
   </body>
+
+  <script>
+    document.getElementById('confirmation').addEventListener('click', e => {
+      const state = confirm('delete this student?');
+      if (!state) e.preventDefault();
+    });
+  </script>
 </html>
