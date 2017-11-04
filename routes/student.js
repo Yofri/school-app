@@ -21,7 +21,6 @@ router.post('/', async (req, res) => {
     });
     res.redirect('/students');
   } catch (err) {
-    // res.send(err);
     res.render('add-student', { err });
   }
 });
@@ -41,6 +40,7 @@ router.get('/edit/:id', async (req, res) => {
 
 router.post('/edit/:id', async (req, res) => {
   const data = {
+    id: req.params.id,
     first_name: req.body.firstname,
     last_name: req.body.lastname,
     email: req.body.email

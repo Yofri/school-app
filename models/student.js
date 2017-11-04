@@ -32,6 +32,23 @@ module.exports = (sequelize, DataTypes) => {
         },
         isEmail: {
           msg: 'Email address must be valid email address'
+        },
+        isDuplicate(email, next) {
+          console.log(this.id);
+          if (this.id === null) {
+            Student.findAll({
+              where: { email }
+            }).then(student => {
+              if (student.length > 0) {
+                return next('Email already in use');
+              }
+              next();
+            }).catch(err => {
+              return next(err);
+            });
+          } else {
+            next();
+          }
         }
       }
     }
