@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Teacher</title>
+  </head>
+  <body>
+    <h3>Add Teacher</h3>
+    {{#if err}}
+      {{#each err.errors}}
+        <p style="color: red;">{{ message }}</p>
+      {{/each}}
+    {{/if}}
+
+    <form action="/teachers" method="post">
+      <p>First Name: <input type="text" name="firstname"/></p>
+      <p>Last name: <input type="text" name="lastname"/></p>
+      <p>Email: <input type="text" name="email"/></p>
+      <button>ADD TEACHER</button>
+    </form>
+  </body>
+</html>

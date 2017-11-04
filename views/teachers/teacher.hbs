@@ -7,6 +7,9 @@
     <title>Teachers</title>
   </head>
   <body>
+    <h3>Teachers Data</h3>
+    <a href="/teachers/add">Add Teachers</a>
+
     <table>
       <thead>
         <tr>
@@ -14,26 +17,30 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
+          <th>Options</th>
         </tr>
       </thead>
       <tbody>
-        <!-- <% rows.forEach(data => { %>
-          <tr>
-            <td><%= data.id %></td>
-            <td><%= data.first_name %></td>
-            <td><%= data.last_name %></td>
-            <td><%= data.email %></td>
-          </tr>
-        <% }) %> -->
         {{#each this}}
           <tr>
             <td> {{id}} </td>
             <td> {{first_name}} </td>
             <td> {{last_name}} </td>
             <td> {{email}} </td>
+            <td>
+              <a href="/teachers/edit/{{id}}">Edit</a>
+              <a href="/teachers/delete/{{id}}" id="confirmation">Delete</a>
+            </td>
           </tr>
         {{/each}}
       </tbody>
     </table>
   </body>
+
+  <script>
+    document.getElementById('confirmation').addEventListener('click', e => {
+      const state = confirm('delete this student?');
+      if (!state) e.preventDefault();
+    });
+  </script>
 </html>
