@@ -52,7 +52,17 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  });
+  }/* , {
+    instanceMethods: {
+      getFullname() {
+        return `${this.first_name} ${this.last_name}`;
+      }
+    }
+  } */);
+
+  Student.prototype.getFullname = function () {
+    return `${this.first_name} ${this.last_name}`;
+  }
 
   return Student;
 };
