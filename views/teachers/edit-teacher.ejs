@@ -16,9 +16,10 @@
           <select name="subjectId">
             <% rowSubject.forEach(rowSubject => { %>
               <option value="<%= rowSubject.id %>"
-                <% if (rowSubject.id === rowTeacher.id) { %>
+                <% if (rowSubject.id === rowTeacher.SubjectId) { %>
                   <%= 'selected' %>
-                <% } %> >
+                <% } %>
+              >
                 <%= rowSubject.subject_name %>
               </option>
             <% }) %>

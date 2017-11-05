@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Student = sequelize.define('Student', {
     first_name: {
@@ -52,17 +51,19 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }/* , {
-    instanceMethods: {
-      getFullname() {
-        return `${this.first_name} ${this.last_name}`;
-      }
-    }
-  } */);
+  });
 
   Student.prototype.getFullname = function () {
     return `${this.first_name} ${this.last_name}`;
   }
+
+  Student.associate = (models) => {
+    Student.hasMany(models.Subject);
+    Student.hasMany(models.StudentSubjects);
+    Student.belongsToMany(models.Subject, {
+      through: StudentSubject
+    });
+  };
 
   return Student;
 };

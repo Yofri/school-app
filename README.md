@@ -62,3 +62,9 @@ Buatlah instance method pada model student dengan nama getFullname yang mengemba
 Relasi antara model Subject dan Teacher adalah one Subject has many Teacher. Asosiasikan model Subject dan Teacher dengan menambahkan field pada salah satu model untuk menampung referensi dari model lainnya. lakukan migrasi dan sesuaikan model dengan migrasi yang telah dilakukan.
 
 Buatlah fitur CRUD untuk tabel Teachers. Ikuti bentuk CRUD untuk tabel Students dan samakan pola routing pada Student.
+
+Pada laman yang menampilkan semua data Teacher, munculkan Subject yang ditentukan untuk Teacher tersebut. Bila belum ditentukan, munculkan tulisan 'unassigned'.
+
+Pada route /subjects, tampilkan semua Subject dengan Teacher yang telah di assign untuk subject tersebut. Pada laman /edit Teacher, bila Teacher sudah ditentukan Subjectnya, pastikan Subject tersebut muncul di dropdown pilihan Subject.
+
+Asosiasikan model Student dan model Subject yang relasinya _many-to-many_.
