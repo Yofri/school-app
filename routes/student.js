@@ -1,17 +1,22 @@
 const router = require('express').Router();
 const Model = require('../models');
 
-module.exports =
-  router
+module.exports = router
   .get('/', async (req, res) => {
     try {
       const rows = await Model.Student.findAll();
-      res.render('students/student', rows);
+      res.render('students/student', { rows });
     } catch (err) {
       console.error(err);
     }
   })
-  .post('/', async (req, res) => {
+
+  .get('/add', (req, res) => {
+    const err = {};
+    res.render('students/add-student', { err });
+  })
+
+  .post('/add', async (req, res) => {
     try {
       await Model.Student.create({
         first_name: req.body.firstname,
@@ -25,9 +30,7 @@ module.exports =
       res.render('students/add-student', { err });
     }
   })
-  .get('/add', (req, res) => {
-    res.render('students/add-student');
-  })
+
   .get('/edit/:id', async (req, res) => {
     try {
       const row = await Model.Student.findById(req.params.id);
@@ -36,6 +39,7 @@ module.exports =
       console.error(err);
     }
   })
+
   .post('/edit/:id', async (req, res) => {
     const data = {
       id: req.params.id,
@@ -53,6 +57,7 @@ module.exports =
       console.error(err);
     }
   })
+
   .get('/delete/:id', async (req, res) => {
     try {
       await Model.Student.destroy({ where: { id: req.params.id } });

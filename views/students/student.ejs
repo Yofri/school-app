@@ -22,25 +22,25 @@
         </tr>
       </thead>
       <tbody align="center">
-        {{#each this}}
+        <% rows.forEach(row => { %>
             <tr>
-              <td>{{ id }}</td>
-              <td>{{ first_name }}</td>
-              <td>{{ last_name }}</td>
-              <td>{{ first_name }} {{ last_name }}</td>
-              <td>{{ email }}</td>
+              <td><%= row.id %></td>
+              <td><%= row.first_name %></td>
+              <td><%= row.last_name %></td>
+              <td><%= rows[0].getFullname() %></td>
+              <td><%= row.email %></td>
               <td>
-                <a href="/students/edit/{{id}}">Edit</a>
-                <a href="/students/delete/{{id}}" id="confirmation">Delete</a>
+                <a href="/students/edit/<%= row.id %>">Edit</a>
+                <a href="/students/delete/<%= row.id %>" class="confirmation">Delete</a>
               </td>
             </tr>
-        {{/each}}
+        <% }) %>
       </tbody>
     </table>
   </body>
 
   <script>
-    document.getElementById('confirmation').addEventListener('click', e => {
+    document.querySelector('.confirmation').addEventListener('click', e => {
       const state = confirm('delete this student?');
       if (!state) e.preventDefault();
     });

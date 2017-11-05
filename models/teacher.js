@@ -54,5 +54,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     SubjectId: DataTypes.INTEGER
   });
+
+  Teacher.associate = (models) => {
+    Teacher.belongsTo(models.Subject);
+  };
+
   return Teacher;
 };

@@ -10,35 +10,41 @@
     <h3>Teachers Data</h3>
     <a href="/teachers/add">Add Teachers</a>
 
-    <table>
+    <table style="width: 100%;">
       <thead>
         <tr>
           <th>Id</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Email</th>
+          <th>Subject</th>
           <th>Options</th>
         </tr>
       </thead>
-      <tbody>
-        {{#each this}}
+      <tbody align="center">
+        <% rows.forEach(row => { %>
           <tr>
-            <td> {{id}} </td>
-            <td> {{first_name}} </td>
-            <td> {{last_name}} </td>
-            <td> {{email}} </td>
+            <td><%= row.id %></td>
+            <td><%= row.first_name %></td>
+            <td><%= row.last_name %></td>
+            <td><%= row.email %></td>
+            <% if (row.Subject !== null) { %>
+              <td><%= row.Subject.subject_name %></td>
+            <% } else { %>
+              <td>Unnassigned</td>
+            <% } %>
             <td>
-              <a href="/teachers/edit/{{id}}">Edit</a>
-              <a href="/teachers/delete/{{id}}" id="confirmation">Delete</a>
+              <a href="/teachers/edit/<%= row.id %>">Edit</a>
+              <a href="/teachers/delete/<%= row.id %>" class="confirmation">Delete</a>
             </td>
           </tr>
-        {{/each}}
+        <% }) %>
       </tbody>
     </table>
   </body>
 
   <script>
-    document.getElementById('confirmation').addEventListener('click', e => {
+    document.querySelector('.confirmation').addEventListener('click', e => {
       const state = confirm('delete this student?');
       if (!state) e.preventDefault();
     });

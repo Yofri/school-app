@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Teacher</title>
+    <title>Add Student</title>
   </head>
   <body>
-    <h3>Add Teacher</h3>
-    {{#if err}}
-      {{#each err.errors}}
-        <p style="color: red;">{{ message }}</p>
-      {{/each}}
-    {{/if}}
+    <h3>Add Students</h3>
+    <% if (err.errors !== undefined) { %>
+      <% err.errors.forEach(err => { %>
+        <p style="color: red;"><%= err.message %></p>
+      <% }) %>
+    <% } %>
 
-    <form action="/teachers" method="post">
+    <form action="/students/add" method="post">
       <p>First Name: <input type="text" name="firstname"/></p>
       <p>Last name: <input type="text" name="lastname"/></p>
       <p>Email: <input type="text" name="email"/></p>
-      <button>ADD TEACHER</button>
+      <button>ADD STUDENT</button>
     </form>
   </body>
 </html>

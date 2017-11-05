@@ -7,7 +7,7 @@ const subject = require('./routes/subject');
 const student = require('./routes/student');
 
 app.set('views', './views');
-app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
