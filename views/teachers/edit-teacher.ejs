@@ -8,13 +8,23 @@
   </head>
   <body>
     <h3>Edit Teacher</h3>
-    <% rows.forEach(row => { %>
-      <form action="/teachers/edit/<%= row.id %>" method="post">
-        <p>First Name: <input type="text" name="firstname" value="<%= row.first_name %>"/></p>
-        <p>Last name: <input type="text" name="lastname" value="<%= row.last_name %>"/></p>
-        <p>Email: <input type="email" name="email" value="<%= row.email %>"/></p>
+      <form action="/teachers/edit/<%= rowTeacher.id %>" method="post">
+        <p>First Name: <input type="text" name="firstname" value="<%= rowTeacher.first_name %>"/></p>
+        <p>Last name: <input type="text" name="lastname" value="<%= rowTeacher.last_name %>"/></p>
+        <p>Email: <input type="email" name="email" value="<%= rowTeacher.email %>"/></p>
+        <p>Subject:
+          <select name="subjectId">
+            <% rowSubject.forEach(rowSubject => { %>
+              <option value="<%= rowSubject.id %>"
+                <% if (rowSubject.id === rowTeacher.id) { %>
+                  <%= 'selected' %>
+                <% } %> >
+                <%= rowSubject.subject_name %>
+              </option>
+            <% }) %>
+          </select>
+        </p>
         <button>EDIT TEACHER</button>
       </form>
-    <% }) %>
   </body>
 </html>

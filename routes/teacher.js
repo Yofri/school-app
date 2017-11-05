@@ -35,8 +35,9 @@ module.exports = router
 
   .get('/edit/:id', async (req, res) => {
     try {
-      const row = await Model.Teacher.findById(req.params.id);
-      res.render('teachers/edit-teacher', { rows: [row] });
+      const rowTeacher = await Model.Teacher.findById(req.params.id);
+      const rowSubject = await Model.Subject.findAll();
+      res.render('teachers/edit-teacher', { rowTeacher, rowSubject });
     } catch (err) {
       console.error(err);
     }
@@ -47,7 +48,8 @@ module.exports = router
       id: req.params.id,
       first_name: req.body.firstname,
       last_name: req.body.lastname,
-      email: req.body.email
+      email: req.body.email,
+      SubjectId: req.body.subjectId
     };
 
     try {

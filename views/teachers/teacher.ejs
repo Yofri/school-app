@@ -41,12 +41,12 @@
         <% }) %>
       </tbody>
     </table>
-  </body>
 
-  <script>
-    document.querySelector('.confirmation').addEventListener('click', e => {
-      const state = confirm('delete this student?');
-      if (!state) e.preventDefault();
-    });
-  </script>
+    <script>
+      document.querySelector('.confirmation').addEventListener('click', e => {
+        const state = confirm('delete this student?');
+        if (!state) e.preventDefault();
+      });
+    </script>
+  </body>
 </html>

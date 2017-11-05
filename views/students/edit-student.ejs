@@ -8,13 +8,11 @@
   </head>
   <body>
     <h3>Edit Students</h3>
-      <% row.forEach(row => { %>
-        <form action="/students/edit/<%= row.id %>" method="post">
-          <p>First Name: <input type="text" name="firstname" value="<%= row.first_name %>"/></p>
-          <p>Last name: <input type="text" name="lastname" value="<%= row.last_name %>"/></p>
-          <p>Email: <input type="email" name="email" value="<%= row.email %>"/></p>
-          <button>EDIT STUDENT</button>
-        </form>
-      <% }) %>
+      <form action="/students/edit/<%= row.id %>" method="post">
+        <p>First Name: <input type="text" name="firstname" value="<%= row.first_name %>"/></p>
+        <p>Last name: <input type="text" name="lastname" value="<%= row.last_name %>"/></p>
+        <p>Email: <input type="email" name="email" value="<%= row.email %>"/></p>
+        <button>EDIT STUDENT</button>
+      </form>
   </body>
 </html>

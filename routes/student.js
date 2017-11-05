@@ -34,7 +34,7 @@ module.exports = router
   .get('/edit/:id', async (req, res) => {
     try {
       const row = await Model.Student.findById(req.params.id);
-      res.render('students/edit-student', { row: [row] });
+      res.render('students/edit-student', { row });
     } catch (err) {
       console.error(err);
     }
