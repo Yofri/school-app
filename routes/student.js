@@ -65,4 +65,29 @@ module.exports = router
     } catch (err) {
       console.error(err);
     }
+  })
+
+  .get('/:id/addsubject', async (req, res) => {
+    try {
+      const rowStudent = await Model.Student.findById(req.params.id);
+      const rowSubject = await Model.Subject.findAll();
+      res.render('students/add-subject', { rowStudent, rowSubject });
+    } catch (err) {
+      console.error(err);
+    }
+  })
+
+  .post('/:id/addsubject', async (req, res) => {
+    console.log(req.body.subjectId);
+    const data = {
+      StudentId: req.params.id,
+      SubjectId: req.body.subjectId
+    };
+
+    try {
+      await Model.StudentSubject.create(data);
+      res.redirect('/students');
+    } catch (err) {
+      console.error(err);
+    }
   });

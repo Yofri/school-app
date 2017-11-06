@@ -18,6 +18,7 @@
           <th>Last Name</th>
           <th>Full Name</th>
           <th>Email</th>
+          <th>Actions</th>
           <th>Options</th>
         </tr>
       </thead>
@@ -29,6 +30,9 @@
               <td><%= row.last_name %></td>
               <td><%= rows[0].getFullname() %></td>
               <td><%= row.email %></td>
+              <td>
+                <a href="/students/<%= row.id %>/addsubject">Add Subject</a>
+              </td>
               <td>
                 <a href="/students/edit/<%= row.id %>">Edit</a>
                 <a href="/students/delete/<%= row.id %>" class="confirmation">Delete</a>
