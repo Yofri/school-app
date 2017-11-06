@@ -8,7 +8,7 @@ module.exports = router
         order: [['first_name', 'ASC']],
         include: [Models.Subject]
       });
-      res.render('teachers/teacher', { rows });
+      res.render('teachers/teacher', {rows, title: 'All Teachers'});
     } catch (err) {
       console.error(err);
     }
@@ -16,7 +16,7 @@ module.exports = router
 
   .get('/add', (req, res) => {
     const err = {};
-    res.render('teachers/add-teacher', { err });
+    res.render('teachers/add-teacher', {err, title: 'Add Teacher'});
   })
 
   .post('/add', async (req, res) => {
@@ -30,7 +30,7 @@ module.exports = router
       });
       res.redirect('/teachers');
     } catch (err) {
-      res.render('teachers/add-teacher', { err });
+      res.render('teachers/add-teacher', {err});
     }
   })
 
@@ -38,7 +38,7 @@ module.exports = router
     try {
       const rowTeacher = await Models.Teacher.findById(req.params.id);
       const rowSubject = await Models.Subject.findAll();
-      res.render('teachers/edit-teacher', { rowTeacher, rowSubject });
+      res.render('teachers/edit-teacher', {rowTeacher, rowSubject, title: 'Edit Teacher'});
     } catch (err) {
       console.error(err);
     }
@@ -55,7 +55,7 @@ module.exports = router
 
     try {
       await Models.Teacher.update(data, {
-        where: { id: req.params.id }
+        where: {id: req.params.id}
       });
       res.redirect('/teachers');
     } catch (err) {
@@ -65,7 +65,7 @@ module.exports = router
 
   .get('/delete/:id', async (req, res) => {
     try {
-      await Models.Teacher.destroy({ where: { id: req.params.id } });
+      await Models.Teacher.destroy({where: {id: req.params.id}});
       res.redirect('/teachers');
     } catch (err) {
       console.error(err);

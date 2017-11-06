@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Models = require('../models');
+const rating = require('../views/helpers/rating');
 
 module.exports = router
   .get('/', async (req, res) => {
@@ -8,7 +9,7 @@ module.exports = router
       const rowsTeacher = await Models.Teacher.findAll({
         order: [['first_name', 'ASC']]
       });
-      res.render('subjects/subject', {rowsSubject, rowsTeacher});
+      res.render('subjects/subject', {rowsSubject, rowsTeacher, title: 'All Subjects'});
     } catch (err) {
       console.error(err);
     }
@@ -22,10 +23,17 @@ module.exports = router
         include: [{
           model: Models.Student,
           order: [['first_name', 'ASC']]
-        }]
+        }],
       });
 
-      res.render('subjects/enrolled-students', {rowsStudent: rowsStudent});
+      rowsStudent.forEach((row, index) => {
+        console.log(rowsStudent[0].rating);
+        rowsStudent[index].rating = rating(row.score);
+      });
+
+      res.render('subjects/enrolled-students', {
+        rowsStudent, title: 'Enrolled Students'
+      });
     } catch (err) {
       console.error(err);
     }
@@ -38,7 +46,7 @@ module.exports = router
         where: {id: req.params.id},
         include: [Models.Student, Models.Subject]
       });
-      res.render('subjects/give-score', {student});
+      res.render('subjects/give-score', {student, title: 'Give Score'});
     } catch (err) {
       console.error(err);
     }

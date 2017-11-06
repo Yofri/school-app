@@ -7,7 +7,7 @@ module.exports = router
       const rows = await Model.Student.findAll({
         order: [['first_name', 'ASC']]
       });
-      res.render('students/student', {rows});
+      res.render('students/student', {rows, title: 'All Students'});
     } catch (err) {
       console.error(err);
     }
@@ -15,7 +15,7 @@ module.exports = router
 
   .get('/add', (req, res) => {
     const err = {};
-    res.render('students/add-student', {err});
+    res.render('students/add-student', {err, title: 'Add Student'});
   })
 
   .post('/add', async (req, res) => {
@@ -36,7 +36,7 @@ module.exports = router
   .get('/edit/:id', async (req, res) => {
     try {
       const row = await Model.Student.findById(req.params.id);
-      res.render('students/edit-student', {row});
+      res.render('students/edit-student', {row, title: 'Edit Student'});
     } catch (err) {
       console.error(err);
     }
@@ -74,7 +74,7 @@ module.exports = router
     try {
       const rowStudent = await Model.Student.findById(req.params.id);
       const rowSubject = await Model.Subject.findAll();
-      res.render('students/add-subject', {rowStudent, rowSubject});
+      res.render('students/add-subject', {rowStudent, rowSubject, title: 'Add Student Subject'});
     } catch (err) {
       console.error(err);
     }

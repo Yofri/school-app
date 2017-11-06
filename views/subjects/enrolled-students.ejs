@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Enrolled Students</title>
-  </head>
+  <%- include('../partials/meta', {title: title}) %>
   <body>
+    <% include ../partials/navigation %>
+
     <h3>Enrolled Students</h3>
 
     <% if (rowsStudent.length > 0) { %>
@@ -15,7 +12,8 @@
           <tr>
             <th>Id</th>
             <th>Students Name</th>
-  	        <th>Score</th>
+            <th>Score</th>
+            <th>Score by Letter</th>
           </tr>
         </thead>
         <tbody align="center">
@@ -31,6 +29,7 @@
                     <a href="/subjects/<%= student.id %>/givescore">Give Score</a>
                   <% } %>
                 </td>
+                <td><%= student.rating %></td>
               </tr>
             <% } %>
           <% }) %>
