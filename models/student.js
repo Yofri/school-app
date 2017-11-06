@@ -58,10 +58,8 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Student.associate = (models) => {
-    Student.hasMany(models.Subject);
-    Student.hasMany(models.StudentSubjects);
     Student.belongsToMany(models.Subject, {
-      through: StudentSubject
+      through: 'StudentSubject'
     });
   };
 
