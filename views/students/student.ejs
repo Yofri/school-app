@@ -43,10 +43,13 @@
     </table>
 
     <script>
-      document.querySelector('.confirmation').addEventListener('click', e => {
-        const state = confirm('delete this student?');
-        if (!state) e.preventDefault();
-      });
+      var confirmation = document.querySelectorAll('.confirmation');
+      for (let i = 0; i < confirmation.length; i++) {
+        confirmation[i].addEventListener('click', e => {
+          const state = confirm('delete this student?');
+          if (!state) e.preventDefault();
+        })
+      }
     </script>
   </body>
 </html>

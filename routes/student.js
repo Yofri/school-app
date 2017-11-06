@@ -5,7 +5,7 @@ module.exports = router
   .get('/', async (req, res) => {
     try {
       const rows = await Model.Student.findAll();
-      res.render('students/student', { rows });
+      res.render('students/student', {rows});
     } catch (err) {
       console.error(err);
     }
@@ -13,7 +13,7 @@ module.exports = router
 
   .get('/add', (req, res) => {
     const err = {};
-    res.render('students/add-student', { err });
+    res.render('students/add-student', {err});
   })
 
   .post('/add', async (req, res) => {
@@ -27,14 +27,14 @@ module.exports = router
       });
       res.redirect('/students');
     } catch (err) {
-      res.render('students/add-student', { err });
+      res.render('students/add-student', {err});
     }
   })
 
   .get('/edit/:id', async (req, res) => {
     try {
       const row = await Model.Student.findById(req.params.id);
-      res.render('students/edit-student', { row });
+      res.render('students/edit-student', {row});
     } catch (err) {
       console.error(err);
     }
@@ -60,7 +60,8 @@ module.exports = router
 
   .get('/delete/:id', async (req, res) => {
     try {
-      await Model.Student.destroy({ where: { id: req.params.id } });
+      await Model.Student.destroy({where: {id: req.params.id}});
+      await Model.StudentSubject.destroy({where: {StudentId: req.params.id}});
       res.redirect('/students');
     } catch (err) {
       console.error(err);
@@ -71,7 +72,7 @@ module.exports = router
     try {
       const rowStudent = await Model.Student.findById(req.params.id);
       const rowSubject = await Model.Subject.findAll();
-      res.render('students/add-subject', { rowStudent, rowSubject });
+      res.render('students/add-subject', {rowStudent, rowSubject});
     } catch (err) {
       console.error(err);
     }

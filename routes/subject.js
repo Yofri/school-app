@@ -15,11 +15,12 @@ module.exports = router
   .get('/:id/enrolledstudents', async (req, res) => {
     try {
       const rowsStudent = await Models.StudentSubject.findAll({
-        attributes: ['id', 'SubjectId', 'StudentId', 'createdAt', 'updatedAt'],
+        attributes: ['id', 'SubjectId', 'StudentId', 'createdAt', 'updatedAt', 'score'],
         where: {SubjectId: req.params.id},
         include: [Models.Student]
-      });
-      res.render('subjects/enrolled-students', {rowsStudent});
+        });
+
+      res.render('subjects/enrolled-students', {rowsStudent: rowsStudent});
     } catch (err) {
       console.error(err);
     }

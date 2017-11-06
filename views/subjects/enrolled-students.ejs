@@ -8,29 +8,36 @@
   </head>
   <body>
     <h3>Enrolled Students</h3>
-    <table style="width: 100%">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Students Name</th>
-	        <th>Score</th>
-        </tr>
-      </thead>
-      <tbody align="center">
-        <% rowsStudent.forEach(student => { %>
-        <tr>
-          <td><%= student.id %></td>
-          <td><%= student.Student.first_name %> <%= student.Student.last_name %></td>
-      	  <td>
-            <% if (student.score != null) { %>
-              <span><%= student.score %></span>
-            <% } else { %>
-              <a href="/subjects/<%= student.id %>/givescore">Give Score</a>
+
+    <% if (rowsStudent.length > 0) { %>
+      <table style="width: 100%">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Students Name</th>
+  	        <th>Score</th>
+          </tr>
+        </thead>
+        <tbody align="center">
+          <% rowsStudent.forEach(student => { %>
+            <% if (student.Student != null) { %>
+              <tr>
+                <td><%= student.Student.id %></td>
+                <td><%= student.Student.first_name %> <%= student.Student.last_name %></td>
+            	  <td>
+                  <% if (student.score != null) { %>
+                    <span><%= student.score %></span>
+                  <% } else { %>
+                    <a href="/subjects/<%= student.id %>/givescore">Give Score</a>
+                  <% } %>
+                </td>
+              </tr>
             <% } %>
-      	  </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No enrolled student.</p>
+    <% } %>
   </body>
 </html>

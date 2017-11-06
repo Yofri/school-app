@@ -11,7 +11,7 @@
     <p>Last Name: <span><%= rowStudent.last_name %></span></p>
     <p>Email: <span><%= rowStudent.email %></span></p>
 
-    <form action="/students/<%= rowStudent.id %>/addsubject" method="post">
+    <form method="post">
       <select name="subjectId">
         <% rowSubject.forEach(subject => { %>
           <option value="<%= subject.id %>"><%= subject.subject_name %></option>

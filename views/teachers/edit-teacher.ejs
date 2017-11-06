@@ -8,7 +8,7 @@
   </head>
   <body>
     <h3>Edit Teacher</h3>
-      <form action="/teachers/edit/<%= rowTeacher.id %>" method="post">
+      <form method="post">
         <p>First Name: <input type="text" name="firstname" value="<%= rowTeacher.first_name %>"/></p>
         <p>Last name: <input type="text" name="lastname" value="<%= rowTeacher.last_name %>"/></p>
         <p>Email: <input type="email" name="email" value="<%= rowTeacher.email %>"/></p>
