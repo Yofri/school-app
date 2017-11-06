@@ -5,6 +5,7 @@ module.exports = router
   .get('/', async (req, res) => {
     try {
       const rows = await Models.Teacher.findAll({
+        order: [['first_name', 'ASC']],
         include: [Models.Subject]
       });
       res.render('teachers/teacher', { rows });

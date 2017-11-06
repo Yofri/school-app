@@ -4,7 +4,9 @@ const Model = require('../models');
 module.exports = router
   .get('/', async (req, res) => {
     try {
-      const rows = await Model.Student.findAll();
+      const rows = await Model.Student.findAll({
+        order: [['first_name', 'ASC']]
+      });
       res.render('students/student', {rows});
     } catch (err) {
       console.error(err);

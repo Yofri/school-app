@@ -5,7 +5,9 @@ module.exports = router
   .get('/', async (req, res) => {
     try {
       const rowsSubject = await Models.Subject.findAll();
-      const rowsTeacher = await Models.Teacher.findAll();
+      const rowsTeacher = await Models.Teacher.findAll({
+        order: [['first_name', 'ASC']]
+      });
       res.render('subjects/subject', {rowsSubject, rowsTeacher});
     } catch (err) {
       console.error(err);
@@ -17,8 +19,11 @@ module.exports = router
       const rowsStudent = await Models.StudentSubject.findAll({
         attributes: ['id', 'SubjectId', 'StudentId', 'createdAt', 'updatedAt', 'score'],
         where: {SubjectId: req.params.id},
-        include: [Models.Student]
-        });
+        include: [{
+          model: Models.Student,
+          order: [['first_name', 'ASC']]
+        }]
+      });
 
       res.render('subjects/enrolled-students', {rowsStudent: rowsStudent});
     } catch (err) {
@@ -40,7 +45,6 @@ module.exports = router
   })
 
   .post('/:id/givescore', async (req, res) => {
-    console.log(req.body.id);
     const obj = {
       score: req.body.score,
       updatedAt: new Date()
