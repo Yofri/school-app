@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Give Score</title>
+  </head>
+  <body>
+    <h3>Input Score</h3>
+    <p>Name: <%= student.Student.first_name %> <%= student.Student.last_name %></p>
+    <p>Subject: <%= student.Subject.subject_name %></p>
+    <form method="post">
+      <input type="hidden" value="<%= student.id %>" name="id">
+      <input type="number" name="score">
+      <button>SUBMIT SCORE</button>
+    </form>
+  </body>
+</html>

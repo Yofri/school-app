@@ -13,6 +13,7 @@
         <tr>
           <th>Id</th>
           <th>Students Name</th>
+	        <th>Score</th>
         </tr>
       </thead>
       <tbody align="center">
@@ -20,6 +21,13 @@
         <tr>
           <td><%= student.id %></td>
           <td><%= student.Student.first_name %> <%= student.Student.last_name %></td>
+      	  <td>
+            <% if (student.score != null) { %>
+              <span><%= student.score %></span>
+            <% } else { %>
+              <a href="/subjects/<%= student.id %>/givescore">Give Score</a>
+            <% } %>
+      	  </td>
         </tr>
         <% }) %>
       </tbody>

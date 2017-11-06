@@ -10,11 +10,9 @@ Buatlah model baru bernama Teacher dengan field sebagai berikut, lakukan migrasi
 
 `sqlz db:migrate`
 
-
 Buat migrasi  untuk menambahkan field 'email: string' pada tabel Teachers, jangan lupa untuk memodifikasi model dan lakukan migrasi.
 
 `sqlz migration:create --name add-email-to-Teacher`
-
 
 Buat seeder untuk tabel Teachers, lalu lakukan seed.
 

@@ -78,7 +78,6 @@ module.exports = router
   })
 
   .post('/:id/addsubject', async (req, res) => {
-    console.log(req.body.subjectId);
     const data = {
       StudentId: req.params.id,
       SubjectId: req.body.subjectId
