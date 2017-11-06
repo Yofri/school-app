@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enrolled Students</title>
+  </head>
+  <body>
+    <h3>Enrolled Students</h3>
+    <table style="width: 100%">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Students Name</th>
+        </tr>
+      </thead>
+      <tbody align="center">
+        <% rowsStudent.forEach(student => { %>
+        <tr>
+          <td><%= student.id %></td>
+          <td><%= student.Student.first_name %> <%= student.Student.last_name %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

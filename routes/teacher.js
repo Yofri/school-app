@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const Model = require('../models');
+const Models = require('../models');
 
 module.exports = router
   .get('/', async (req, res) => {
     try {
-      const rows = await Model.Teacher.findAll({
-        include: [Model.Subject]
+      const rows = await Models.Teacher.findAll({
+        include: [Models.Subject]
       });
       res.render('teachers/teacher', { rows });
     } catch (err) {
@@ -20,7 +20,7 @@ module.exports = router
 
   .post('/add', async (req, res) => {
     try {
-      await Model.Teacher.create({
+      await Models.Teacher.create({
         first_name: req.body.firstname,
         last_name: req.body.lastname,
         email: req.body.email,
@@ -35,8 +35,8 @@ module.exports = router
 
   .get('/edit/:id', async (req, res) => {
     try {
-      const rowTeacher = await Model.Teacher.findById(req.params.id);
-      const rowSubject = await Model.Subject.findAll();
+      const rowTeacher = await Models.Teacher.findById(req.params.id);
+      const rowSubject = await Models.Subject.findAll();
       res.render('teachers/edit-teacher', { rowTeacher, rowSubject });
     } catch (err) {
       console.error(err);
@@ -53,7 +53,7 @@ module.exports = router
     };
 
     try {
-      await Model.Teacher.update(data, {
+      await Models.Teacher.update(data, {
         where: { id: req.params.id }
       });
       res.redirect('/teachers');
@@ -64,7 +64,7 @@ module.exports = router
 
   .get('/delete/:id', async (req, res) => {
     try {
-      await Model.Teacher.destroy({ where: { id: req.params.id } });
+      await Models.Teacher.destroy({ where: { id: req.params.id } });
       res.redirect('/teachers');
     } catch (err) {
       console.error(err);

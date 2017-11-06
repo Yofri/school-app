@@ -4,7 +4,7 @@
     "password": "toor",
     "database": "school",
     "host": "127.0.0.1",
-    "operatorsAliases": "Op",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "operatorsAliases": "Op"
   }
 }

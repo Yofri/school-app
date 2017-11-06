@@ -23,21 +23,25 @@
           <th>Id</th>
           <th>Subject Name</th>
           <th>Teachers</th>
+          <th>Students</th>
         </tr>
       </thead>
       <tbody align="center">
-        <% rowsSubject.forEach(rowSubject => { %>
+        <% rowsSubject.forEach(subject => { %>
           <tr>
-            <td><%= rowSubject.id %></td>
-            <td><%= rowSubject.subject_name %></td>
+            <td><%= subject.id %></td>
+            <td><%= subject.subject_name %></td>
             <td>
-              <% rowsTeacher.forEach(rowTeacher => { %>
-                <% if (rowSubject.id === rowTeacher.SubjectId) { %>
+              <% rowsTeacher.forEach(teacher => { %>
+                <% if (subject.id === teacher.SubjectId) { %>
                   <ul>
-                    <li><%= rowTeacher.first_name %></li>
+                    <li><%= teacher.first_name %></li>
                   </ul>
                 <% } %>
               <% }) %>
+            </td>
+            <td>
+              <a href="/subjects/<%= subject.id %>/enrolledstudents">Enrolled Students</a>
             </td>
           </tr>
         <% }) %>
